@@ -1,24 +1,63 @@
 import logo from './logo.svg';
 import './App.css';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import Dashboard from './components/Dashboard';
+import { useState } from 'react';
+
+// import IconButton from '@mui/material/IconButton';
+// import MenuIcon from '@mui/icons-material/Menu';
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //LISA CHANGE USE STATE TO FALSE BEFORE SUBMIT
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            My Music App
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        component="form"
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '25ch' },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+
+        {isLoggedIn ? (
+          <Dashboard />
+        ) : (
+
+          <Stack spacing={2}>
+            <TextField required id="login-un" label="Username" variant="standard" />
+            <TextField required id="login-pw" label="Password" variant="standard" />
+            <Button onClick={handleLogin} variant="contained">Login</Button>
+          </Stack>
+
+        )}
+
+      </Box>
+    </Box>
   );
 }
 
