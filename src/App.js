@@ -10,12 +10,10 @@ import Stack from '@mui/material/Stack';
 import Dashboard from './components/Dashboard';
 import { useState } from 'react';
 
-// import IconButton from '@mui/material/IconButton';
-// import MenuIcon from '@mui/icons-material/Menu';
 
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   //LISA CHANGE USE STATE TO FALSE BEFORE SUBMIT
 
   const handleLogin = () => {
