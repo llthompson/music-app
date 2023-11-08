@@ -1,5 +1,6 @@
 import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
+import { pink } from '@mui/material/colors';
 import { Card } from '@mui/material';
 import { CardContent } from '@mui/material';
 import { CardActions } from '@mui/material';
@@ -12,6 +13,17 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useState } from 'react';
 
+const PinkSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: pink[600],
+      '&:hover': {
+        backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: pink[600],
+    },
+  }));
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
@@ -58,7 +70,7 @@ export default function Dashboard() {
                             <p>Is this application connected to the internet?</p>
                         </CardContent>
                         <CardActions>
-                            <Switch
+                            <PinkSwitch
                                 checked={online}
                                 onChange={handleOnlineChange}
                                 {...label} defaultChecked />
